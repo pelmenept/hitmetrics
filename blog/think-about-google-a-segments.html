@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"  content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible"  content="IE=edge">
+        
+<title>Think About Google Analytics Segments hitmetrics.io</title>
+<meta name="description"  content="Think About Google Analytics Segments hitmetrics.io">
+
+<meta property="og:site_name" content="hitmetrics.io" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="hitmetrics.io: Think About Google Analytics Segments" />
+<meta property="og:url" content="https://hitmetrics.io" />
+<meta property="og:description" content="No Google Analytics implementation is complete without fully configures Segments, Events, Goals, Goal values and custom dashboards. Today we'll talk about setting a comprehensive list of segments for your reporting needs." />
+<meta property="og:image" content="https://hitmetrics.io/static/img/posts/think-about-google-a-segments/1.jpg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://hitmetrics.io/static/img/posts/think-about-google-a-segments/1.jpg" />
+<meta name="twitter:site" content="@hitmetrics" />
+<meta name="twitter:title" content="hitmetrics.io: Think About Google Analytics Segments" />
+<meta name="twitter:description" content="No Google Analytics implementation is complete without fully configures Segments, Events, Goals, Goal values and custom dashboards. Today we'll talk about setting a comprehensive list of segments for your reporting needs." />
+
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <!-- Chargebee -->
+        <script src="https://js.chargebee.com/v2/chargebee.js" data-cb-site="hitmetrics"> </script>
+        
+        <link rel="stylesheet" href="/static/css/bulma.min.css" />
+        <script defer src="/static/js/fontawesome.min.js"></script>
+        <script defer src="/static/js/fa-regular.min.js"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+         })(window,document,'script','dataLayer','GTM-MSHFVHZ');</script>
+        <!-- End Google Tag Manager -->
+        <link rel="icon" href="/static/favicon.png" type="image/png" />
+        
+
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MSHFVHZ"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <section class="section">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-4 is-offset-2">
+                        
+                        <a href="/">
+                            <img style="width: 300px; margin-bottom: 40px;" alt="hitmetrics.io logo" src="/static/img/logo.png"/>
+                        </a>
+                        
+                    </div>
+                    <div class="column is-4 has-text-right has-text-weight-bold">
+                        <p class="is-size-5">
+                            
+                            <a href="/blog">blog</a>
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+    
+    
+<section class="section">
+<div class="container">
+    <div class="content">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <h6 class="subtitle is-6"></h6>
+								<h3 class="title is-3">Think About Google Analytics Segments</h3>
+								<p class="content">
+                    
+
+<p>No Google Analytics implementation is complete without fully configures Segments, Events, Goals, Goal values and custom dashboards. Today we'll talk about setting a comprehensive list of segments for your reporting needs.</p>
+<h2>What are segments?</h2>
+<p>Think of segments as a slice of pizza or a cake. Whatever works for you. Essentially it's a slice of data in your Analytics Report based on a parameter or multiple parameters, which can be applied to any report inside Google Analytics.</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/think-about-google-a-segments/1.jpg" /></p>
+<p>An example of a segment would be users who have spent more than $1,000 on a purchase. Another segment could be users coming from paid search campaign to your site.</p>
+<p>Segments are great at isolating specific information in reports. You might be interested in the behavioral difference of the high spenders vs low spenders. Looking at 2 segments which would identify these segments will help you understand how to upsel low spenders and get them interested in purchasing more expensive products. Another example would be looking at visitors who have dropped out of the conversion flow, which will allow you to respond with an offer to try to bring non converters back, and recover some of the lost revenue.</p>
+<p>Using segments allows you to see the forest for the trees, identifying patterns in visitor behavior, and lets you react with precision to group behavior changes. Sometimes a sharp change in overall traffic could be a result of behavior change of one of the segments. Realizing this fast, and applying a targeted solution will save you revenue.</p>
+<h2>Starting with Google Analytics Segments</h2>
+<p>You will find segments section in the Google Analytics admin section</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/think-about-google-a-segments/2.png" /></p>
+<h2>Basic Segments</h2>
+<p>Adding segments based on built in attributes simple. Every attribute has a section dedicated to it, the only thing left is to enter value</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/think-about-google-a-segments/3.png" /></p>
+<h2>Event Segments</h2>
+<p>Base segments are important to understand behaviour of most common visitor groups. But the true power of learning about your visitors and users specific to your business is building segments based on site custom Events implemented in Google Analytics. Researching behavior of visitors interested in specific articles or visitors who have made a purchase previously has never been simpler.</p>
+<p>Let's create a segment based on <a href="https://hitmetrics.io">hitmetrics.io</a> homepage event. We try to understand how interested visitors in our offering, so we measure # of visitors scrolling down to the pricing table location on homepage and view at least 50% of the section.</p>
+<p>First we need to identify event in Google Analytics report based on which we will be creating this segment. Simply navigate to Behaviour → Events → Top Events report</p>
+<p>Here is how it looks for in <a href="https://hitmetrics.io">hitmetrics.io</a> report:</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/think-about-google-a-segments/4.png" /></p>
+<p>We keep our pages extremely simple, thus there are only 2 events currently firing on the homepage: "viewed_plans" - when visitor scrolls all the way down to pricing table, and "purchase_plan" when one of the plan is subscribed to. We are mostly interested in the first event for segment creation.</p>
+<p>In the "conditions" tab of the new segment, we will need to identify event based on which segment will be created:</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/think-about-google-a-segments/5.png" /></p>
+<p>In our case it will be Event Category exactly matches "viewed_plans":</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/think-about-google-a-segments/6.png" /></p>
+<p>That is really it. Depending on complexity of event parameters you might need to base it on additional attributes. Here is another example of segment, but now based on 2 attributes - Event Category and Event Label.</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/think-about-google-a-segments/7.png" /></p>
+<h2>Sequence Segments.</h2>
+<p>Another awesome segment filter that we use a lot at <a href="https://hitmetrics.io">hitmetrics.io</a> for our clients, is "sequences", which allows create segments based on interactions order. Sequences are powerful at filtering visitors who have dropped off during conversion flow.</p>
+<p>Here is a segment that includes only visitors that went to homepage → /blog → /blog/10-reports-to-look-at pages consequentially</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/think-about-google-a-segments/8.png" /></p>
+<p>Sequence segment can be as detailed as require, can include multiple filters (sequences), and steps in the sequence can be based on different dimensions.</p>
+<h2>Things to remember for segments</h2>
+<ol>
+<li>Filters in segments can be "include" or "exclude"</li>
+<li>Segments conditions and sequences can be "session" or "users" based.</li>
+</ol>
+<p>Both of the parameters need to be taken into consideration when designing segments for your needs.</p>
+<h2>Core Base Segments</h2>
+<p>Google analytics is very good at providing a core set of most common segments, which apply to almost any website, however to truly use the power of segments for your reporting purposes consider some of the most common segments we utilize for our clients:</p>
+<p><strong>Conversion based</strong></p>
+<p>Create segments based on successful conversions on your site. For example: purchase, newsletter subscription, calculator completion. Go another step deeper, and split purchase segments into "Whale Spenders" and "Tuna Spenders".</p>
+<p><strong>Traffic based</strong></p>
+<p>For different businesses traffic sources will perform differently. It absolutely makes to create segments to cleanly split your high converting traffic from the rest.</p>
+<p><strong>Site search based</strong></p>
+<p>On site search can tell you a lot about your visitors: what products they are interested in, how easy is site navigation experience in comparison with searching for an item. You can even create segments based on what products visitors are searching for.</p>
+<p>When building robust site tagging and reporting strategy, ensure you have set up useful segments to help you analyze visitors behaviour better, and customize onsite experience per segment.</p>
+<h2>Remarketing</h2>
+<p>Don't forget to integrate the discovered segments with adwords for top of the line re marketing tactics.</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/think-about-google-a-segments/9.png" /></p>
+<p>At <a href="https://hitmetrics.io">hitmetrics.io</a>, we LOVE segments, and create them everyday for our clients. Let us know if you need support with defining segments for your site: info@hitmetrics.io</p>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+        <section class="section">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <p>
+                        
+                        <a href="/blog">blog</a>
+                        |
+                        <a href="javascript:void(0)" data-cb-type="portal">customer portal</a>
+                        
+                    </p>
+                </div>
+                <div class="content has-text-centered">
+                    <p>
+                        hitmetrics.io 2018
+                    </p>
+                    <p>
+                        <a href="mailto:in&#102;&#111;@&#104;it%6d%65t%72&#105;c%73%2ei%6f" target="_blank">&#105;&#110;&#102;&#111;&#64;&#104;&#105;&#116;&#109;&#101;&#116;&#114;&#105;&#99;&#115;&#46;&#105;&#111;</a>
+                    </p>
+                    <p>
+                        
+                        <a href="/privacy">Privacy Policy </a>,
+                        <a href="/terms">Terms and Conditions</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

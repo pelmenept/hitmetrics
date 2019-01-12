@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
+  <url>
+      <loc>https://hitmetrics.io</loc>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+  </url>
+  <url>
+      <loc>https://hitmetrics.io/blog</loc>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+  </url>
+   <url>
+      <loc>https://hitmetrics.io/blog/how-to-add-google-analytics-tracking-on-a-shopify-thank-you-page</loc>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+  </url>
+   <url>
+      <loc>https://hitmetrics.io/blog/think-about-google-a-segments</loc>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+  </url>
+   <url>
+      <loc>https://hitmetrics.io/blog/testing-implementation</loc>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+  </url>
+   <url>
+      <loc>https://hitmetrics.io/blog/starter-web-analytics-metrics-to-know</loc>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+  </url>
+   <url>
+      <loc>https://hitmetrics.io/blog/google-analytics-alternatives</loc>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+  </url>
+   <url>
+      <loc>https://hitmetrics.io/blog/10-reports-to-look-at</loc>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+  </url>
+  
+</urlset>

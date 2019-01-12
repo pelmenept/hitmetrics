@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"  content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible"  content="IE=edge">
+        
+<title>Testing Google Analytics Implementation hitmetrics.io</title>
+<meta name="description"  content="Testing Google Analytics Implementation hitmetrics.io">
+
+<meta property="og:site_name" content="hitmetrics.io" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="hitmetrics.io: Testing Google Analytics Implementation" />
+<meta property="og:url" content="https://hitmetrics.io" />
+<meta property="og:description" content="One part of analytics implementation should always be testing of said implementation. There are multiple reasons to verify implementation, ranging from simple "There is no data in the reports" to, "It does not look like our conversion event is tracking accurate information"" />
+<meta property="og:image" content="https://hitmetrics.io/static/img/posts/testing-implementation/testing_codeblock.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://hitmetrics.io/static/img/posts/testing-implementation/testing_codeblock.png" />
+<meta name="twitter:site" content="@hitmetrics" />
+<meta name="twitter:title" content="hitmetrics.io: Testing Google Analytics Implementation" />
+<meta name="twitter:description" content="One part of analytics implementation should always be testing of said implementation. There are multiple reasons to verify implementation, ranging from simple "There is no data in the reports" to, "It does not look like our conversion event is tracking accurate information"" />
+
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <!-- Chargebee -->
+        <script src="https://js.chargebee.com/v2/chargebee.js" data-cb-site="hitmetrics"> </script>
+        
+        <link rel="stylesheet" href="/static/css/bulma.min.css" />
+        <script defer src="/static/js/fontawesome.min.js"></script>
+        <script defer src="/static/js/fa-regular.min.js"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+         })(window,document,'script','dataLayer','GTM-MSHFVHZ');</script>
+        <!-- End Google Tag Manager -->
+        <link rel="icon" href="/static/favicon.png" type="image/png" />
+        
+
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MSHFVHZ"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <section class="section">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-4 is-offset-2">
+                        
+                        <a href="/">
+                            <img style="width: 300px; margin-bottom: 40px;" alt="hitmetrics.io logo" src="/static/img/logo.png"/>
+                        </a>
+                        
+                    </div>
+                    <div class="column is-4 has-text-right has-text-weight-bold">
+                        <p class="is-size-5">
+                            
+                            <a href="/blog">blog</a>
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+    
+    
+<section class="section">
+<div class="container">
+    <div class="content">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <h6 class="subtitle is-6"></h6>
+								<h3 class="title is-3">Testing Google Analytics Implementation</h3>
+								<p class="content">
+                    
+
+<p>One part of analytics implementation should always be testing of said implementation. There are multiple reasons to verify implementation, ranging from simple "There is no data in the reports" to, "It does not look like our conversion event is tracking accurate information".</p>
+<p>Before starting testing any tagging implementations, ensure you have "business tagging requirements document" on hand, and you do understand all of the required interactions that need to be tested from business perspective.</p>
+<p>What is "business tagging requirements document" you might ask - This document simply describes high level reporting requirements applicable to the business. It could contain requirements such as:</p>
+<ol>
+<li>Track Page Views, Visits, Visitors and Bounce Rate on home page</li>
+<li>When visitor scrolls down to plans table, record the event</li>
+<li>For each successful visitor conversion into paying customer, record the event as a goal, and track goal value.</li>
+</ol>
+<p>Describing best practices around how the document should look like, is probably a topic for a separate post. The format of the document does not matter that much, as long as both parties involved (business and analytics) are able to collaborate on bringing analytics requirements to life.</p>
+<h2>High Level</h2>
+<p>At a high level there are 3 things that you always need to focus on when testing every single page for correct Google Analytics implementation</p>
+<ol>
+<li>Codeblock - This includes Google Analytics or Tag Manager code block present on the page</li>
+<li>Page View events - These events happen immediately when you land on the page, and populate such metrics as page views, visits, bounce rate</li>
+<li>Custom Interaction events - These events happen on specific interactions on the page, such as button clicks, purchase conversions, modal popups, and any other event that was part of tagging requirement.</li>
+</ol>
+<h2>Codeblock</h2>
+<p>Codeblock is an essential part of loading a tag on the page. Without correct codeblock present, tag will simply not work. Codeblock is simply a <code>&lt;script&gt;</code> tag, that is usually put in the <code>&lt;head&gt;</code> section of the page, that is responsible for loading correct JS file, which in turn will enable tracking on the pages.</p>
+<p><strong>Testing codeblock</strong></p>
+<p>Depending on the browser, navigate to the testing page, perform right click anywhere on the page and select "view source".  You should be able to find codeblock similar to below in the <code>&lt;head&gt;</code> section of the page.</p>
+<pre><code>&lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;
+&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-1&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'UA-XXXXXXXXX-1');
+&lt;/script&gt;
+</code></pre>
+
+<p>Things to doublecheck:</p>
+<ul>
+<li>Ensure each <code>&lt;script&gt;</code> tag has the closing <code>&lt;/script&gt;</code> tag.</li>
+<li>Double check UA-XXXXXXXXX-1 number that it matches the one indicated in the Google Analytics interface</li>
+<li>Both function calls gtag('js', new Date()) and gtag('config', 'UA-XXXXXXXX-1') must be present in the codeblock</li>
+<li>Check the "src" attribute points to the correct url</li>
+</ul>
+<p>If you are using tag manager solution to load tags on the pages, codeblock will look different.</p>
+<p>Now it's time to check if codeblock loads Google Analytics JS file correctly.</p>
+<p>Fire up Developer's Console by pressing F12 (works for Chrome, Firefox and Edge browsers). Select "network" tab, and filter on "collect". Now press F5</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/testing-implementation/testing_codeblock.png" /></p>
+<p>You should see only 1 "collect" request. This is page view event, tracked by google analytics. Congratulations! Basic tracking functionality is working as expected on current page.</p>
+<p>Click on the request, a new window will open to the right, showing all the details collected with the page view event. Here is how it looks like for <a href="http://hitmetrics.io">hitmetrics.io</a> landing page:</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/testing-implementation/page_view_query_parameters.png" /></p>
+<p>There are a lot of parameters transferred with every "collect" request. This is how Google Analytics able to collect information about your visitors, and later create reports based on these requests. At this stage, check the correctness of 2 values:</p>
+<ol>
+<li>dl - Should contain url of the page, with search parameters (values that come after "?")</li>
+<li>dt - Page title.</li>
+</ol>
+<p><strong>Testing Custom Events</strong></p>
+<p>Since now we now Google Analytics tag is loaded successfully on the pages, we need to ensure custom events are also working as expected. This phase will mostly test implementation of the events by IT team on the pages, rather than Google Analytics functionality. In other words, if you did not modify Google Analytics JS file directly before loading on the page, custom events are fully functional. The only reason custom events not firing as expected would be due to implementation.</p>
+<p>It is recommended that you test every single custom event indicated in the business requirement document, to ensure you have appropriate tagging on the pages.</p>
+<p>Let's get to it. Custom event requests are sent to google analytics servers using identical requests, that can be filtered on "collect" word. So keep the developer's console setting as you left them after testing page view events. Now locate the custom event interaction that should be present on the page (button click, modal popup, payment conversion) and trigger it.</p>
+<p>In the case of hitmetrics.io, I will be testing "Viewed Plans" event. We try to track a number of interactions on our landing page, and "Viewed Plans" event fires when visitor scrolls all the way down to our pricing table. We would like to track this event to understand how effective our plans section at converting visitors. This way we can track number of people viewing table, and number of people converting, thus calculating conversion metrics of visitors becoming customers after viewing plans table:</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/testing-implementation/hitmetrics_plans.png" /></p>
+<p>And here is how request data looks like:</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/testing-implementation/viewed_plans_request.png" /></p>
+<p>It is important to confirm at this stage, that values passed in the request are the correct ones. Pay special attention to 4 variables:</p>
+<ul>
+<li>ec - Event Category</li>
+<li>ea - Event Action</li>
+<li>el - Event Label</li>
+</ul>
+<p>Additionally ensure all requests return "200" HTTP code, which means they were successful.</p>
+<p><img alt="" src="https://hitmetrics.io/static/img/posts/testing-implementation/successful_events.png" /></p>
+<p>And that is all to it!</p>
+<h2>Bonus: Google Analytics Debugger</h2>
+<p>There is an awesome extension for Google Chrome browser - <a href="https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna/related?hl=en">https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna/related?hl=en</a> when downloaded and enabled, it will print out all detailed interactions into developer tools console automatically.</p>
+<p>Let us help you with all the tagging needs for your business, we can handle tagging recommendations, implementation, testing and of course reporting.</p>
+<p>Simply write us a line at <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#104;&#105;&#116;&#109;&#101;&#116;&#114;&#105;&#99;&#115;&#46;&#105;&#111;">&#105;&#110;&#102;&#111;&#64;&#104;&#105;&#116;&#109;&#101;&#116;&#114;&#105;&#99;&#115;&#46;&#105;&#111;</a></p>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+        <section class="section">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <p>
+                        
+                        <a href="/blog">blog</a>
+                        |
+                        <a href="javascript:void(0)" data-cb-type="portal">customer portal</a>
+                        
+                    </p>
+                </div>
+                <div class="content has-text-centered">
+                    <p>
+                        hitmetrics.io 2018
+                    </p>
+                    <p>
+                        <a href="mailto:in&#102;&#111;@&#104;it%6d%65t%72&#105;c%73%2ei%6f" target="_blank">&#105;&#110;&#102;&#111;&#64;&#104;&#105;&#116;&#109;&#101;&#116;&#114;&#105;&#99;&#115;&#46;&#105;&#111;</a>
+                    </p>
+                    <p>
+                        
+                        <a href="/privacy">Privacy Policy </a>,
+                        <a href="/terms">Terms and Conditions</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
